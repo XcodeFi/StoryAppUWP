@@ -3,10 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RealApp.Pages.Stories.ListStoryPage"
              xmlns:storyPage="clr-namespace:RealApp.Pages.Stories"
+             xmlns:storiesView="clr-namespace:RealApp.Views.Stories" 
+             Title="{Binding Title}"
              >
-    <storyPage:ListStoryPageXaml.Content>
-        <StackLayout>
-            <Label Text="Danh sách truyện chêm" />
-        </StackLayout>
-    </storyPage:ListStoryPageXaml.Content>
+	<storiesView:StoryListView
+		IsPullToRefreshEnabled="True"
+		ItemsSource="{Binding Stories}" 
+		RefreshCommand="{Binding LoadStoriesCommand}" 
+		IsRefreshing="{Binding IsBusy, Mode=OneWay}" 
+		ItemTapped="StoryItemTapped" />
 </storyPage:ListStoryPageXaml>

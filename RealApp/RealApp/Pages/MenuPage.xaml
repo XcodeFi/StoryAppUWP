@@ -6,6 +6,8 @@
              Icon="{Binding Icon}"
              xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
              BackgroundColor="#53ba9d">
+    
+    
     <ContentPage.BackgroundColor>
         <OnPlatform x:TypeArguments="Color"
           Android="#F5F5F5" />

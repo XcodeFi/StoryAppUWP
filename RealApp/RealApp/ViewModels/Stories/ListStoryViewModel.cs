@@ -47,17 +47,27 @@ namespace RealApp.ViewModels.Stories
         /// </summary>
         public Command LoadStoriesCommand
         {
-            get { return _LoadStoriesCommand ?? (_LoadStoriesCommand = new Command(ExecuteLoadProductsCommand)); }
+            get { return _LoadStoriesCommand ?? (_LoadStoriesCommand = new Command(ExecuteLoadStoriesCommand)); }
         }
 
-        async void ExecuteLoadProductsCommand()
+        async void ExecuteLoadStoriesCommand()
         {
             if (IsBusy)
                 return;
 
             IsBusy = true;
-            //LoadProductsCommand.ChangeCanExecute();
+            LoadStoriesCommand.ChangeCanExecute();
 
+            Stories = new ObservableCollection<Story>(
+                new List<Story>()
+            { new Story { Title = "Story 1", Rates = 1 },
+             new Story { Title = "Story 2", Rates = 2 },
+              new Story { Title = "Story 3", Rates = 1 },
+               new Story { Title = "Story 4", Rates = 3 },
+                new Story { Title = "Story 5", Rates = 1 },
+                 new Story { Title = "Story 6", Rates = 2 },
+                  new Story { Title = "Story 7", Rates = 5 },
+            });
             //Products = new ObservableCollection<Product>((await _DataService.GetProductsAsync(_CategoryId)));
 
             IsBusy = false;
