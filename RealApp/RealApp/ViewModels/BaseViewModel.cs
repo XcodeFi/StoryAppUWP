@@ -15,7 +15,7 @@ namespace RealApp.ViewModels
         public BaseViewModel(INavigation navigation = null)
         {
             Navigation = navigation;
-        }
+        }    
 
         public bool IsInitialized { get; set; }
 
