@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<page:LoginPageXaml  xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RealApp.Pages.LoginPage"
+             xmlns:app="clr-namespace:RealApp" 
+             xmlns:page="clr-namespace:RealApp.Pages" 
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+             >
+    <page:LoginPageXaml.Content>
+        <Grid Padding="20,0,20,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackLayout Grid.Row="0" Grid.Column="0">
+                <controls:CircleImage
+                    Source="iconApp.png" Margin="0,50,0,0" HeightRequest="70" WidthRequest="200"
+                    BorderColor = "White"
+                    BorderThickness = "5"
+                    />
+                <StackLayout Padding="0,10,0,0" Orientation="Vertical"  VerticalOptions="Center">
+                    <Label FontSize="18" HorizontalTextAlignment="Center" Text="Tìm khách hàng chon xe ngay khi bạn đăng thông tin chiều đi"/>
+                </StackLayout>
+                <StackLayout Padding="0,20,0,0" Orientation="Vertical"  VerticalOptions="Center">
+                    <Entry Placeholder="Tên đăng nhập" HeightRequest="40" Text="{Binding Username}" />
+                    <Entry Placeholder="Mật khẩu" HeightRequest="40"  Text="{Binding Password}" IsPassword="true" />
+                </StackLayout>
+                <StackLayout Padding="0,10,0,0" Orientation="Horizontal"  HorizontalOptions="Start">
+                    <Switch IsToggled="True"/>
+                    <Label FontSize="Default" HorizontalTextAlignment="Center" Text="Lưu thông tin đăng nhập"/>
+                </StackLayout>
+                <StackLayout Padding="0,10,0,0" Orientation="Vertical"  VerticalOptions="Center">
+                    <Button
+                  x:Name="buttonCancel"
+                  Text="Đăng Nhập"
+                  Command="{Binding LoginCommand}"
+                  TextColor="White"
+                  BackgroundColor="#0BA25E"
+                  BorderRadius="15"
+                  BorderColor="#ff9928"
+                  BorderWidth="2"
+                  HeightRequest="40"
+                  WidthRequest="200"/>
+                    <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="true" />
+                    <Button Text="Đăng ký lái xe chiều về" BackgroundColor="White" TextColor="Blue"  BorderRadius="15" HorizontalOptions="Center" VerticalOptions="End"/>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout Grid.Row="1" Grid.Column="0">
+                <Label Text="Một sản phẩm của Bình Anh Electronic" TextColor="Blue" HorizontalOptions="Center" VerticalOptions="End" />
+            </StackLayout>
+        </Grid>
+    </page:LoginPageXaml.Content>
+</page:LoginPageXaml>
