@@ -27,7 +27,7 @@ namespace RealApp.ViewModels.Stories
             set
             {
                 _Stories = value;
-                OnPropertyChanged("Stories");
+                OnPropertyChanged("Stories");   
             }
         }
 
@@ -35,9 +35,8 @@ namespace RealApp.ViewModels.Stories
 
         public ListStoryViewModel()
         {
-            _Stories = new ObservableCollection<Story>();
-
-            _DataService = DependencyService.Get<IDataService>();
+            Stories = new ObservableCollection<Story>();
+            //_DataService = DependencyService.Get<IDataService>();
         }
 
         Command _LoadStoriesCommand;

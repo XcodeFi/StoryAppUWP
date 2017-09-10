@@ -3,6 +3,7 @@ using RealApp.Pages.NewWords;
 using RealApp.Pages.Stories;
 using RealApp.Statics;
 using RealApp.ViewModels;
+using RealApp.ViewModels.Stories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -53,6 +54,7 @@ namespace RealApp.Pages
                     case MenuType.Stories:
                         page = new RealAppNavigationPage(new ListStoryPage
                         {
+                            BindingContext = new ListStoryViewModel() { Navigation = this.Navigation },
                             Title = "Truyện chêm",
                             Icon = new FileImageSource { File = "bookshell.png" }
                         });

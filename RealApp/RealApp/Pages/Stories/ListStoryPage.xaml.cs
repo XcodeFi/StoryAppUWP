@@ -18,20 +18,18 @@ namespace RealApp.Pages.Stories
         public ListStoryPage()
         {
             InitializeComponent();
-
-            BindingContext = new ListStoryViewModel();
         }
 
-        //protected override void OnAppearing()
-        //{
-        //    base.OnAppearing();
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
 
-        //    if (ViewModel.IsInitialized)
-        //        return;
+            if (ViewModel.IsInitialized)
+                return;
 
-        //    ViewModel.LoadStoriesCommand.Execute(null);
-        //    ViewModel.IsInitialized = true;
-        //}
+            ViewModel.LoadStoriesCommand.Execute(null);
+            ViewModel.IsInitialized = true;
+        }
         async void StoryItemTapped(object sender, ItemTappedEventArgs e)
         {
             Story story = ((Story)e.Item);
