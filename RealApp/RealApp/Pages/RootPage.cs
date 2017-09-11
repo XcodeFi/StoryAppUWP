@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using RealApp.ViewModels.Words;
 
 namespace RealApp.Pages
 {
@@ -45,6 +46,7 @@ namespace RealApp.Pages
                     case MenuType.NewWords:
                         var page = new RealAppNavigationPage(new ListWordPage
                         {
+                            BindingContext = new ListWordViewModel() { Navigation = this.Navigation },
                             Title = "Tra từ mới",
                             Icon = new FileImageSource { File = "search.png" }
                         });

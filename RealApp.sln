@@ -258,22 +258,4 @@ Global
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {569610A0-9141-491B-8FFC-54DEDBD674B8}
 	EndGlobalSection
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 5
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://5truong4.visualstudio.com/
-		SccProjectUniqueName0 = RealApp\\RealApp.iOS\\RealApp.iOS.csproj
-		SccProjectName0 = RealApp/RealApp.iOS
-		SccLocalPath0 = RealApp\\RealApp.iOS
-		SccLocalPath1 = .
-		SccProjectUniqueName2 = RealApp\\RealApp.UWP\\RealApp.UWP.csproj
-		SccProjectName2 = RealApp/RealApp.UWP
-		SccLocalPath2 = RealApp\\RealApp.UWP
-		SccProjectUniqueName3 = RealApp\\RealApp.Android\\RealApp.Android.csproj
-		SccProjectName3 = RealApp/RealApp.Android
-		SccLocalPath3 = RealApp\\RealApp.Android
-		SccProjectUniqueName4 = RealApp\\RealApp\\RealApp.csproj
-		SccProjectName4 = RealApp/RealApp
-		SccLocalPath4 = RealApp\\RealApp
-	EndGlobalSection
 EndGlobal

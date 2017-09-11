@@ -33,9 +33,7 @@ namespace RealApp.Pages.Stories
         async void StoryItemTapped(object sender, ItemTappedEventArgs e)
         {
             Story story = ((Story)e.Item);
-
-            await DisplayAlert("tap", "tapped", "ok");
-            //await Navigation.PushAsync(new ProductDetailPage() { BindingContext = new ProductDetailViewModel(catalogProduct, ViewModel.IsPerformingProductSelection) { Navigation = ViewModel.Navigation } });
+            await Navigation.PushAsync(new StoryDetailPage() { BindingContext = new StoryDetailViewModel(story) { Navigation = ViewModel.Navigation } });
         }
     }
 

@@ -43,6 +43,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\ToUpperConverter.cs" />
+    <Compile Include="Extentions\IListExtensions.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -65,20 +66,31 @@
     <Compile Include="Pages\NewWords\ListWordPage.xaml.cs">
       <DependentUpon>ListWordPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\NewWords\WordDetailPage.xaml.cs">
+      <DependentUpon>WordDetailPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\RootPage.cs" />
     <Compile Include="Pages\Stories\ListStoryPage.xaml.cs">
       <DependentUpon>ListStoryPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Stories\StoryDetailPage.xaml.cs">
+      <DependentUpon>StoryDetailPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\DataService.cs" />
     <Compile Include="Services\IDataService.cs" />
+    <Compile Include="Statics\Fonts.cs" />
+    <Compile Include="Statics\FontSizes.cs" />
+    <Compile Include="Statics\MessagingServiceConstants.cs" />
     <Compile Include="Statics\Palette.cs" />
     <Compile Include="Statics\RowSizes.cs" />
+    <Compile Include="Statics\Thicknesses.cs" />
     <Compile Include="ViewModels\About\AboutItemListViewModel.cs" />
     <Compile Include="ViewModels\About\AboutItemViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\Stories\ListStoryViewModel.cs" />
+    <Compile Include="ViewModels\Stories\StoryDetailViewModel.cs" />
     <Compile Include="ViewModels\Words\ListWordViewModel.cs" />
     <Compile Include="ViewModels\Words\WordViewModel.cs" />
     <Compile Include="Views\ModelBoundContentView.cs" />
@@ -164,6 +176,18 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\NonPersistentSelectedItemListView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Stories\StoryDetailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\NewWords\WordDetailPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

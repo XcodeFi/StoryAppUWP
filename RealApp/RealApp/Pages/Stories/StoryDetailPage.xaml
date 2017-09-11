@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<storyPage:StoryDetailPageXaml xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RealApp.Pages.Stories.StoryDetailPage"
+             xmlns:statics="clr-namespace:RealApp.Statics"
+             xmlns:storyPage="clr-namespace:RealApp.Pages.Stories"
+             Title="{Binding Title}"
+             >
+    <storyPage:StoryDetailPageXaml.Content>
+        <StackLayout>
+            <Label Text="{Binding Title}" />
+        </StackLayout>
+    </storyPage:StoryDetailPageXaml.Content>
+</storyPage:StoryDetailPageXaml>

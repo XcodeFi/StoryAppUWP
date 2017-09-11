@@ -1,5 +1,7 @@
-﻿using RealApp.Models;
+﻿using RealApp.Extentions;
+using RealApp.Models;
 using RealApp.Services;
+using RealApp.Statics;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -27,7 +29,7 @@ namespace RealApp.ViewModels.Stories
             set
             {
                 _Stories = value;
-                OnPropertyChanged("Stories");   
+                OnPropertyChanged("Stories");
             }
         }
 
@@ -35,8 +37,13 @@ namespace RealApp.ViewModels.Stories
 
         public ListStoryViewModel()
         {
-            Stories = new ObservableCollection<Story>();
+            _Stories = new ObservableCollection<Story>();
+           
             //_DataService = DependencyService.Get<IDataService>();
+            //MessagingCenter.Subscribe<Story>(this, MessagingServiceConstants.STORY, (story) =>
+            //{
+            //    IsInitialized = false;
+            //});
         }
 
         Command _LoadStoriesCommand;
@@ -57,16 +64,16 @@ namespace RealApp.ViewModels.Stories
             IsBusy = true;
             LoadStoriesCommand.ChangeCanExecute();
 
-            Stories = new ObservableCollection<Story>(
+            Stories.AddRange(
                 new List<Story>()
-            { new Story { Title = "Story 1", Rates = 1 },
-             new Story { Title = "Story 2", Rates = 2 },
-              new Story { Title = "Story 3", Rates = 1 },
-               new Story { Title = "Story 4", Rates = 3 },
-                new Story { Title = "Story 5", Rates = 1 },
-                 new Story { Title = "Story 6", Rates = 2 },
-                  new Story { Title = "Story 7", Rates = 5 },
-            });
+                { new Story { Title = "Story 1", Rates = 1 },
+                  new Story { Title = "Story 2", Rates = 2 },
+                  new Story { Title = "Story 3", Rates = 1 },
+                   new Story { Title = "Story 4", Rates = 3 },
+                    new Story { Title = "Story 5", Rates = 1 },
+                     new Story { Title = "Story 6", Rates = 2 },
+                      new Story { Title = "Story 7", Rates = 5 },
+                });
             //Products = new ObservableCollection<Product>((await _DataService.GetProductsAsync(_CategoryId)));
 
             IsBusy = false;
