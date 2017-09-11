@@ -24,7 +24,7 @@ namespace RealApp
             InitializeComponent();
 
             app = this;
-            MainPage = new LoginPage();
+            MainPage = new RootPage();
         }
         public static void GoToRoot()
         {
