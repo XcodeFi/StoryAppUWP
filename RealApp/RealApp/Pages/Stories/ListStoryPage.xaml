@@ -11,9 +11,9 @@
                   RowHeight="{x:Static statics:RowSizes.LargeRowHeightInt}"
                   SeparatorColor="{x:Static statics:Palette._013}"
                   ItemsSource="{Binding Stories}"
-                RefreshCommand="{Binding ExecuteLoadStoriesCommand}"
-                IsRefreshing="{Binding IsBusy, Mode=OneWay}"
-                ItemTapped="StoryItemTapped"
+                  RefreshCommand="{Binding ExecuteLoadStoriesCommand}"
+                  IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                  ItemTapped="StoryItemTapped"
                       >
           <ListView.ItemTemplate>
             <DataTemplate>

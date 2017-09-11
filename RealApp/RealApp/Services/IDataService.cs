@@ -9,6 +9,6 @@ namespace RealApp.Services
     public interface IDataService
     {
 
-
+       
     }
 }
