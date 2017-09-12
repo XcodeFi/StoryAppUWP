@@ -14,7 +14,7 @@ namespace RealApp.ViewModels.Stories
 {
     public class ListStoryViewModel : BaseViewModel
     {
-        readonly IDataService _DataService;
+        readonly  StoryRepo _StoryRepo;
 
         public new string Title
         {
@@ -38,7 +38,7 @@ namespace RealApp.ViewModels.Stories
         public ListStoryViewModel()
         {
             _Stories = new ObservableCollection<Story>();
-           
+            _StoryRepo = new StoryRepo();
             //_DataService = DependencyService.Get<IDataService>();
             //MessagingCenter.Subscribe<Story>(this, MessagingServiceConstants.STORY, (story) =>
             //{
@@ -53,10 +53,10 @@ namespace RealApp.ViewModels.Stories
         /// </summary>
         public Command LoadStoriesCommand
         {
-            get { return _LoadStoriesCommand ?? (_LoadStoriesCommand = new Command(ExecuteLoadStoriesCommand)); }
+            get { return _LoadStoriesCommand ?? (_LoadStoriesCommand = new Command(ExecuteLoadStoriesCommandAsync)); }
         }
 
-        async void ExecuteLoadStoriesCommand()
+        void ExecuteLoadStoriesCommandAsync()
         {
             if (IsBusy)
                 return;
@@ -74,7 +74,8 @@ namespace RealApp.ViewModels.Stories
                      new Story { Title = "Story 6", Rates = 2 },
                       new Story { Title = "Story 7", Rates = 5 },
                 });
-            //Products = new ObservableCollection<Product>((await _DataService.GetProductsAsync(_CategoryId)));
+
+             new Task(async()=> Stories= await _StoryRepo.Get(x => x.Deleted == false, x => x.Author));
 
             IsBusy = false;
             LoadStoriesCommand.ChangeCanExecute();

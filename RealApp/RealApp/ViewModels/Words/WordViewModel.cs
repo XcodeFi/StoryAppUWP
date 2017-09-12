@@ -11,7 +11,6 @@ namespace RealApp.ViewModels.Words
 {
     public class WordViewModel: BaseViewModel
     {
-        readonly IDataService _DataService;
 
         public new string Title
         {

@@ -10,8 +10,7 @@ namespace RealApp.ViewModels.Stories
 {
     public class StoryDetailViewModel : BaseViewModel
     {
-        readonly IDataService _DataService;
-
+        readonly StoryRepo _StoryRepo;
         public new string Title
         {
             get { return base.Title; }
