@@ -6,25 +6,31 @@ using RealApp.Models;
 using System.Linq.Expressions;
 using System.Collections.ObjectModel;
 using SQLite;
+using Xamarin.Forms;
 
 namespace RealApp.Services.Base
 {
-    public class LocalRepo<T> : ILocalRepo<T> where T : BaseModel, new()
+    public class LocalRepo
     {
-        private SQLiteAsyncConnection _db;
+        protected static object locker = new object();
+        private SQLiteConnection _db;
 
-        public LocalRepo(SQLiteAsyncConnection db)
+        public LocalRepo(SQLiteConnection db)
         {
-            this._db = db;
+            this._db =db;
         }
 
-        public AsyncTableQuery<T> AsQueryable()
+        public TableQuery<T> AsQueryable<T>() where T : BaseModel, new()
         {
-            return _db.Table<T>();
+            lock (locker)
+            {
+                return _db.Table<T>();
+            }
         }
 
-        public async Task<int> Count(Expression<Func<T, bool>> predicate = null)
+        public  int Count<T>(Expression<Func<T, bool>> predicate = null)  where T : BaseModel, new()
         {
+
             var query = _db.Table<T>();
 
             if (predicate != null)
@@ -32,60 +38,60 @@ namespace RealApp.Services.Base
                 query = query.Where(predicate);
             }
 
-            return await query.CountAsync();
+            return  query.Count();
         }
 
-        public async Task<int> Delete(T entity)
+        public  int Delete<T>(T entity) where T : BaseModel, new()
         {
-            return await _db.DeleteAsync(entity);
+            return  _db.Delete(entity);
         }
 
-        public async Task<List<T>> Get()
+        public  List<T> Get<T>() where T : BaseModel, new()
         {
-            return await _db.Table<T>().ToListAsync();
+            return  _db.Table<T>().ToList();
         }
 
-        public async Task<T> Get(Expression<Func<T, bool>> predicate)
+        public  T Get<T>(Expression<Func<T, bool>> predicate) where T : BaseModel, new()
         {
-            return await _db.FindAsync<T>(predicate);
+            return _db.Find<T>(predicate);
         }
 
-        public async Task<T> Get(int id)
+        public T Get<T>(int id) where T : BaseModel, new()
         {
-            return await _db.FindAsync<T>(id);
+            return  _db.Find<T>(id);
         }
 
-        public async Task<ObservableCollection<T>> Get<TValue>(Expression<Func<T, bool>> predicate = null, Expression<Func<T, TValue>> orderBy = null)
+        //public  ObservableCollection<T> Get<T>(Expression<Func<T, bool>> predicate = null, Expression<Func<T, TValue>> orderBy = null) where T : BaseModel, new()
+        //{
+        //    var query = _db.Table<T>();
+
+        //    if (predicate != null)
+        //    {
+        //        query = query.Where(predicate);
+        //    }
+        //    if (orderBy != null)
+        //    {
+        //        query = query.OrderBy<TValue>(orderBy);
+        //    }
+
+        //    var collection = new ObservableCollection<T>();
+        //    var items =  query.ToList();
+        //    foreach (var item in items)
+        //    {
+        //        collection.Add(item);
+        //    }
+
+        //    return collection;
+        //}
+
+        public  int Insert<T>(T entity) where T : BaseModel, new()
         {
-            var query = _db.Table<T>();
-
-            if (predicate != null)
-            {
-                query = query.Where(predicate);
-            }
-            if (orderBy != null)
-            {
-                query = query.OrderBy<TValue>(orderBy);
-            }
-
-            var collection = new ObservableCollection<T>();
-            var items = await query.ToListAsync();
-            foreach (var item in items)
-            {
-                collection.Add(item);
-            }
-
-            return collection;
+            return  _db.Insert(entity);
         }
 
-        public async Task<int> Insert(T entity)
+        public  int Update<T>(T entity) where T : BaseModel, new()
         {
-            return await _db.InsertAsync(entity);
-        }
-
-        public async Task<int> Update(T entity)
-        {
-            return await _db.UpdateAsync(entity);
+            return  _db.Update(entity);
         }
     }
 }

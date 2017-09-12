@@ -15,7 +15,7 @@ namespace RealApp.Models
         : ITableData
 #endif
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         public DateTimeOffset? CreatedAt { get; set; }
 

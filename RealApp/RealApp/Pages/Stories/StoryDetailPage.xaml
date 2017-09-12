@@ -6,6 +6,13 @@
              xmlns:storyPage="clr-namespace:RealApp.Pages.Stories"
              Title="{Binding Title}"
              >
+    <storyPage:StoryDetailPageXaml.ToolbarItems>
+        <ToolbarItem Text="+">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource" Android="edit-50.png" />
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+    </storyPage:StoryDetailPageXaml.ToolbarItems>
     <storyPage:StoryDetailPageXaml.Content>
         <StackLayout>
             <Label Text="{Binding Title}" />

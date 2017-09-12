@@ -6,6 +6,13 @@
              xmlns:storiesView="clr-namespace:RealApp.Views.Stories"
              xmlns:statics="clr-namespace:RealApp.Statics"
              Title="{Binding Title}">
+  <storyPage:ListStoryPageXaml.ToolbarItems>
+    <ToolbarItem Text="+" Clicked="OnItemAdded">
+      <ToolbarItem.Icon>
+        <OnPlatform x:TypeArguments="FileImageSource" Android="storyAdd-50.png" />
+      </ToolbarItem.Icon>
+    </ToolbarItem>
+  </storyPage:ListStoryPageXaml.ToolbarItems>
   <storyPage:ListStoryPageXaml.Content>
         <ListView HasUnevenRows="False"
                   RowHeight="{x:Static statics:RowSizes.LargeRowHeightInt}"
@@ -48,4 +55,5 @@
           </ListView.ItemTemplate>
         </ListView>
   </storyPage:ListStoryPageXaml.Content>
+
 </storyPage:ListStoryPageXaml>

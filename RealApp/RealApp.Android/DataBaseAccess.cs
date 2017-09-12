@@ -4,18 +4,19 @@ using Xamarin.Forms;
 using RealApp.Droid;
 using SQLite;
 
-[assembly: Dependency(typeof(DataBaseAccess))]
+[assembly: Dependency(typeof(Database_Android))]
 namespace RealApp.Droid
 {
-    public class DataBaseAccess : IDatabaseAccess
+    public class Database_Android : IDatabaseAccess
     {
-        public SQLiteAsyncConnection GetConnection()
+        public Database_Android() { }
+        public SQLiteConnection GetConnection()
         {
             var sqlDbFileName = "RealAppDb.db3";
             var documentsPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
             var path = System.IO.Path.Combine(documentsPath, sqlDbFileName);
 
-            var connection = new SQLiteAsyncConnection(path);
+            var connection = new SQLiteConnection(path);
 
             return connection;
         }

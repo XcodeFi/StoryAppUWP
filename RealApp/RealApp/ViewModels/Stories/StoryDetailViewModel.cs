@@ -5,12 +5,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace RealApp.ViewModels.Stories
 {
     public class StoryDetailViewModel : BaseViewModel
     {
-        readonly StoryRepo _StoryRepo;
         public new string Title
         {
             get { return base.Title; }
@@ -34,38 +34,38 @@ namespace RealApp.ViewModels.Stories
             Title = _Story.Title;
         }
 
-        //Command _LoadStoriesCommand;
+        Command _SaveStoryCommand;
 
-        ///// <summary>
-        ///// Command to load accounts
-        ///// </summary>
-        //public Command LoadStoriesCommand
-        //{
-        //    get { return _LoadStoriesCommand ?? (_LoadStoriesCommand = new Command(ExecuteLoadStoriesCommand)); }
-        //}
+        /// <summary>
+        /// Command to load accounts
+        /// </summary>
+        public Command SaveStoryCommand
+        {
+            get
+            {
+                return _SaveStoryCommand ?? (_SaveStoryCommand = new Command(ExecuteSaveStoryCommandAsync));
+            }
+        }
 
-        //async void ExecuteLoadStoriesCommand()
-        //{
-        //    if (IsBusy)
-        //        return;
+         void  ExecuteSaveStoryCommandAsync()
+        {
+            if (IsBusy)
+                return;
 
-        //    IsBusy = true;
-        //    LoadStoriesCommand.ChangeCanExecute();
+            IsBusy = true;
+            SaveStoryCommand.ChangeCanExecute();
 
-        //    Stories.AddRange(
-        //        new List<Story>()
-        //        { new Story { Title = "Story 1", Rates = 1 },
-        //          new Story { Title = "Story 2", Rates = 2 },
-        //          new Story { Title = "Story 3", Rates = 1 },
-        //           new Story { Title = "Story 4", Rates = 3 },
-        //            new Story { Title = "Story 5", Rates = 1 },
-        //             new Story { Title = "Story 6", Rates = 2 },
-        //              new Story { Title = "Story 7", Rates = 5 },
-        //        });
-        //    //Products = new ObservableCollection<Product>((await _DataService.GetProductsAsync(_CategoryId)));
+            //if (_Story.Id<=0)
+            //{
+            //     _StoryRepo.Insert(_Story);
+            //}
+            //else
+            //{
+            //     _StoryRepo.Update(_Story);
+            //}
 
-        //    IsBusy = false;
-        //    LoadStoriesCommand.ChangeCanExecute();
-        //}
+            IsBusy = false;
+            SaveStoryCommand.ChangeCanExecute();
+        }
     }
 }

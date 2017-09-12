@@ -9,6 +9,7 @@ namespace RealApp
 {
     public interface IDatabaseAccess
     {
-        SQLiteAsyncConnection GetConnection();
+        //SQLiteAsyncConnection GetConnection();
+        SQLiteConnection GetConnection();
     }
 }

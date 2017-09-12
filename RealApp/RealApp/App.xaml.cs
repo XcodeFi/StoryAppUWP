@@ -2,6 +2,7 @@
 using RealApp.Localization;
 using RealApp.Pages;
 using RealApp.Pages.About;
+using RealApp.Services;
 using SQLite;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace RealApp
     public partial class App : Application
     {
 
-        static SQLiteAsyncConnection _DbConnection;
+        static SQLiteConnection _DbConnection;
         static Application _app;
 
         public static Application CurrentApp
@@ -23,7 +24,7 @@ namespace RealApp
             get { return _app; }
         }
 
-        public static SQLiteAsyncConnection DbConnection
+        public static SQLiteConnection DbConnection
         {
             get
             {
@@ -34,14 +35,27 @@ namespace RealApp
                 return _DbConnection;
             }
         }
-
+        static ItemRepository repository;               //  advanced respository (repository and generic database class)
+        public static ItemRepository Repository
+        {
+            get
+            {
+                if (repository == null)
+                {
+                    repository = new ItemRepository();
+                }
+                return repository;
+            }
+        }
         public App()
         {
             InitializeComponent();
 
             _app = this;
 
+            _DbConnection = DependencyService.Get<IDatabaseAccess>().GetConnection();
             MainPage = new RootPage();
+            
         }
 
         public static void GoToRoot()

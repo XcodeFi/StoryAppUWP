@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pageAdd:StoryAddNewPageXaml xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RealApp.Pages.Stories.StoryAddNewPage"
+             xmlns:pageAdd="clr-namespace:RealApp.Pages.Stories"
+             Title="{Binding Title}"
+             >
+    <pageAdd:StoryAddNewPageXaml.Content>
+        <StackLayout>
+            <Label Text="Add story page" />
+        </StackLayout>
+    </pageAdd:StoryAddNewPageXaml.Content>
+</pageAdd:StoryAddNewPageXaml>

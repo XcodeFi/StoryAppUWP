@@ -26,10 +26,20 @@ namespace RealApp.Pages.Stories
 
             if (ViewModel.IsInitialized)
                 return;
+          
 
             ViewModel.LoadStoriesCommand.Execute(null);
             ViewModel.IsInitialized = true;
         }
+        async void OnItemAdded(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new StoryAddNewPage() { BindingContext = new StoryDetailViewModel(new Story())
+            {
+                Navigation = ViewModel.Navigation,
+                Title="Thêm truyện mới",
+            } });
+        }
+
         async void StoryItemTapped(object sender, ItemTappedEventArgs e)
         {
             Story story = ((Story)e.Item);
